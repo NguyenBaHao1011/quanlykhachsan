@@ -49,5 +49,5 @@ UC5 --> UC6 : <<extend>>
 | Tiền điều kiện         | Nhân viên lễ tân hoặc quản lý đã đăng nhập hệ thống; hệ thống và cơ sở dữ liệu hoạt động bình thường                                                                                                  |
 | Hậu điều kiện          | Thông tin khách hàng được lưu trữ trong CSDL; dữ liệu sẵn sàng dùng cho đặt phòng, thanh toán và báo cáo                                                                                                     |
 | Kịch bản chính          | 1. Chọn chức năng quản lý khách hàng<br />2. Hệ thống hiển thị danh sách khách hàng<br />3. Thêm / Cập nhật / Xóa / Tìm kiếm khách hàng<br />4. Hệ thống xử lý yêu cầu<br />5. Thông báo kết quả |
-| Kịch bản phụ            | A1 - Khách hàng đã tồn tại<br />- Hệ thống phát hiện trùng CCCD/Hộ chiếu<br />- Thông báo khách hàng đã tồn tại                                                                                           |
-| Luồng sự kiện thay thế | A1 - Khách hàng đã tồn tại<br />- Hệ thống phát hiện trùng CCCD/Hộ chiếu<br />- Thông báo khách hàng đã tồn tại<br />- Cho phép cập nhật thông ti                                                       |
+| Kịch bản phụ            | A1 - Khách hàng đã tồn tại<br />- Hệ thống phát hiện trùng CCCD/Hộ chiếu<br />- Thông báo khách hàng đã tồn tại                                                                                                                    |
+
