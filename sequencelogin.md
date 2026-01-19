@@ -1,27 +1,5 @@
-![1768805384368](image/sequencelogin/1768805384368.jpg)
 
-```plantuml
-@startuml
-actor User
-boundary "Login UI" as UI
-control "Auth Controller" as Auth
-database "Database" as DB
-
-User -> UI : Nhập username & password
-UI -> Auth : Gửi thông tin đăng nhập
-Auth -> DB : Kiểm tra tài khoản
-DB --> Auth : Kết quả xác thực
-
-alt Đăng nhập hợp lệ
-    Auth -> UI : Thông báo đăng nhập thành công
-    UI -> User : Chuyển vào trang chính
-else Đăng nhập không hợp lệ
-    Auth -> UI : Thông báo lỗi
-    UI -> User : Hiển thị sai thông tin
-end
-
-@enduml
-```
+![Sơ đồ tuần tự đăng nhập](sequence_diagram_login.jpg)
 
 | Thuộc tính       | Mô tả                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
