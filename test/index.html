@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Grand Luxury - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<header class="topbar">
+    <div class="logo">🏨 Grand Luxury</div>
+    <nav class="top-nav">
+        <span>Trang Chủ</span>
+        <span>Đặt Phòng</span>
+        <span class="user">👤 Guest User</span>
+    </nav>
+</header>
+
+<div class="layout">
+
+    <!-- ===== SIDE BAR ===== -->
+    <aside class="sidebar">
+        <div class="profile">
+            <h3>Khách Visit</h3>
+            <p>user@example.com</p>
+            <span class="badge">Thành Viên Bạc</span>
+        </div>
+
+        <ul class="menu">
+            <li class="active">📅 Đặt Phòng Của Tôi</li>
+            <li>👤 Cài Đặt Hồ Sơ</li>
+            <li>💳 Phương Thức Thanh Toán</li>
+            <li>☕ Dịch Vụ Tại Phòng</li>
+            <li>🕒 Lịch Trình Của Tôi</li>
+            <li>⭐ Đánh Giá Của Tôi</li>
+            <li>🔔 Thông Báo</li>
+        </ul>
+
+        <button class="logout">Đăng Xuất</button>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="content">
+
+        <!-- Welcome Bar -->
+        <div class="welcome-bar">
+            <h2>Chào mừng trở lại, Khách!</h2>
+            <p>Bạn đang có <b>150 điểm thưởng</b></p>
+        </div>
+
+        <!-- Upcoming -->
+        <section class="card">
+            <h3>Upcoming Stays</h3>
+            <p class="empty">No upcoming bookings planned.</p>
+            <button class="btn">Plan a Trip</button>
+        </section>
+
+        <!-- Past Stays -->
+        <section class="card">
+            <h3>Past Stays</h3>
+
+            <div class="booking">
+                <img src="https://picsum.photos/120/80?1">
+                <div>
+                    <h4>Standard Room</h4>
+                    <p>Oct 12 - Oct 14, 2024</p>
+                    <b>$360</b>
+                </div>
+                <span class="status">Completed</span>
+            </div>
+
+            <div class="booking">
+                <img src="https://picsum.photos/120/80?2">
+                <div>
+                    <h4>Deluxe Suite</h4>
+                    <p>Sep 05 - Sep 08, 2024</p>
+                    <b>$1,050</b>
+                </div>
+                <span class="status">Completed</span>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
