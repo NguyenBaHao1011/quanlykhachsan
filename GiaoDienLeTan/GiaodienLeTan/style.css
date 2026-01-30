@@ -1,0 +1,57 @@
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f5f6fa;
+}
+
+header{
+    background:#3a8694;
+    color:white;
+    padding:15px;
+}
+
+.container{
+    display:flex;
+}
+
+.sidebar{
+    width:220px;
+    background:#b7cfe7;
+    height:100vh;
+    padding-top:20px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:12px;
+    text-decoration:none;
+}
+
+.sidebar a:hover{
+    background:#37474f;
+}
+
+.main{
+    flex:1;
+    padding:20px;
+}
+
+.room-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:15px;
+}
+
+.room{
+    padding:20px;
+    border-radius:10px;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.trong{ background:#2ecc71; }
+.dangthue{ background:#e74c3c; }
+.baotri{ background:#7f8c8d; }

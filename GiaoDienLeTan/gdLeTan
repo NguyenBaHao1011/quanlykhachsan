@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lễ tân khách sạn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>HỆ THỐNG QUẢN LÝ KHÁCH SẠN - LỄ TÂN</h2>
+</header>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#">Dashboard</a>
+        <a href="#">Quản lý phòng</a>
+        <a href="#">Đặt phòng</a>
+        <a href="#">Khách hàng</a>
+        <a href="#">Hóa đơn</a>
+        <a href="#">Dịch vụ</a>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+        <h3>Tình trạng phòng</h3>
+
+        <div class="room-grid" id="roomGrid">
+            <!-- JS render phòng -->
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
