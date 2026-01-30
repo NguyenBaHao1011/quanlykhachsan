@@ -32,7 +32,7 @@ body{
     color:var(--text);
 }
 
-/* SIDEBAR */
+
 .sidebar{
     width:250px;
     background:linear-gradient(180deg,#1e3a8a,#2563eb);
@@ -62,7 +62,7 @@ body{
     background:rgba(255,255,255,.2);
 }
 
-/* MAIN */
+
 .main{
     flex:1;
     padding:25px;
@@ -82,7 +82,7 @@ body{
     box-shadow:0 10px 20px rgba(0,0,0,.08);
 }
 
-/* TABLE */
+
 table{
     width:100%;
     border-collapse:collapse;
@@ -113,7 +113,7 @@ body.dark td{
 }
 
 
-/* STATUS */
+
 .status{
     padding:6px 12px;
     border-radius:20px;
@@ -138,7 +138,7 @@ button{
 
 <body>
 
-<!-- SIDEBAR -->
+
 <div class="sidebar">
     <h2>🏨 HOTEL ADMIN</h2>
     <a class="active" onclick="showPage('dashboard',this)">📊 Dashboard</a>
@@ -150,10 +150,10 @@ button{
     <a onclick="logout()">🚪 Đăng xuất</a>
 </div>
 
-<!-- MAIN -->
+
 <div class="main">
 
-<!-- DASHBOARD -->
+
 <div id="dashboard">
     <h2>📊 Dashboard</h2>
     <div class="cards">
@@ -164,7 +164,7 @@ button{
     </div>
 </div>
 
-<!-- BOOKING -->
+
 <div id="booking" class="hidden">
     <h2>📅 Quản lý đặt phòng</h2>
     <table>
@@ -189,7 +189,7 @@ button{
     </table>
 </div>
 
-<!-- ROOMS -->
+
 <div id="rooms" class="hidden">
     <h2>🛏 Quản lý phòng</h2>
     <table>
@@ -214,7 +214,7 @@ button{
     </table>
 </div>
 
-<!-- CUSTOMERS -->
+
 <div id="customers" class="hidden">
     <h2>👤 Quản lý khách hàng</h2>
 
@@ -255,7 +255,7 @@ button{
     </table>
 </div>
 
-<!-- STAFF -->
+
 <div id="staff" class="hidden">
     <h2>👔 Quản lý nhân viên</h2>
     <table>
