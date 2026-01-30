@@ -1,44 +1,321 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Quản lý khách sạn</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<title>Hotel Admin System</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --primary:#2563eb;
+    --bg:#f1f5f9;
+    --card:#fff;
+    --text:#0f172a;
+}
+
+body.dark{
+    --bg:#020617;         
+    --card:#0f172a;       
+    --text:#e5e7eb;
+}
+
+*{
+    box-sizing:border-box;
+    font-family:Segoe UI;
+}
+
+body{
+    margin:0;
+    display:flex;
+    background:var(--bg);
+    color:var(--text);
+}
+
+
+.sidebar{
+    width:250px;
+    background:linear-gradient(180deg,#1e3a8a,#2563eb);
+    color:#fff;
+    padding:20px;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:8px;
+    cursor:pointer;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:rgba(255,255,255,.2);
+}
+
+
+.main{
+    flex:1;
+    padding:25px;
+    margin-left:250px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--card);
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+th{
+    color:#020617;  
+    font-weight:600;
+}
+body.dark th{
+    background:#1e293b;   
+    color:#f8fafc;        
+    font-weight:600;
+}
+
+body.dark table{
+    background:#0f172a;
+}
+
+body.dark td{
+    color:#e5e7eb;
+}
+
+
+
+.status{
+    padding:6px 12px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.pending{background:#fde68a;}
+.success{background:#bbf7d0;}
+
+.hidden{display:none;}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:var(--primary);
+    color:#fff;
+}
+</style>
 </head>
+
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <h1>HỆ THỐNG QUẢN LÝ KHÁCH SẠN</h1>
-    </header>
 
-    <!-- MENU -->
-    <nav class="menu">
-        <ul>
-             <li><a href="#">Đăng ký</a></li>
-            <li><a href="#">Đăng nhập</a></li>
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Phòng</a></li>
-            <li><a href="#">Khách hàng</a></li>
-            <li><a href="#">Đặt phòng</a></li>
-            <li><a href="#">Hóa đơn</a></li>
-            <li><a href="#">Đăng xuất</a></li>
-        </ul>
-    </nav>
+<div class="sidebar">
+    <h2>🏨 HOTEL ADMIN</h2>
+    <a class="active" onclick="showPage('dashboard',this)">📊 Dashboard</a>
+    <a onclick="showPage('booking',this)">📅 Đặt phòng</a>
+    <a onclick="showPage('rooms',this)">🛏 Quản lý phòng</a>
+    <a onclick="showPage('customers',this)">👤 Khách hàng</a>
+    <a onclick="showPage('staff',this)">👔 Nhân viên</a>
+    <a onclick="toggleDark()">🌙 Dark mode</a>
+    <a onclick="logout()">🚪 Đăng xuất</a>
+</div>
 
-    <!-- MAIN CONTENT -->
-    <main class="container">
-        <h2>Chào mừng bạn đến với hệ thống</h2>
-        <p>Chọn chức năng ở menu để quản lý khách sạn.</p>
 
-        <div class="cards">
-            <div class="card">Quản lý phòng</div>
-            <div class="card">Quản lý khách hàng</div>
-            <div class="card">Đặt phòng</div>
-            <div class="card">Thanh toán</div>
-        </div>
-    </main>
+<div class="main">
 
-    <script src="js/main.js"></script>
+
+<div id="dashboard">
+    <h2>📊 Dashboard</h2>
+    <div class="cards">
+        <div class="card">Tổng phòng<br><b>50</b></div>
+        <div class="card">Đã đặt<br><b>28</b></div>
+        <div class="card">Khách hôm nay<br><b>42</b></div>
+        <div class="card">Doanh thu<br><b>120.000.000đ</b></div>
+    </div>
+</div>
+
+
+<div id="booking" class="hidden">
+    <h2>📅 Quản lý đặt phòng</h2>
+    <table>
+        <tr>
+            <th>Mã đặt</th>
+            <th>Khách hàng</th>
+            <th>Phòng</th>
+            <th>Trạng thái</th>
+        </tr>
+        <tr>
+            <td>DP001</td>
+            <td>Nguyễn Văn A</td>
+            <td>101</td>
+            <td><span class="status pending" onclick="toggleStatus(this)">Chờ</span></td>
+        </tr>
+        <tr>
+            <td>DP002</td>
+            <td>Trần Thị B</td>
+            <td>202</td>
+            <td><span class="status success" onclick="toggleStatus(this)">Xác nhận</span></td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="rooms" class="hidden">
+    <h2>🛏 Quản lý phòng</h2>
+    <table>
+        <tr>
+            <th>Mã phòng</th>
+            <th>Loại</th>
+            <th>Giá</th>
+            <th>Trạng thái</th>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>Deluxe</td>
+            <td>800.000đ</td>
+            <td>Trống</td>
+        </tr>
+        <tr>
+            <td>202</td>
+            <td>Suite</td>
+            <td>1.200.000đ</td>
+            <td>Đã đặt</td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="customers" class="hidden">
+    <h2>👤 Quản lý khách hàng</h2>
+
+    <input type="text"
+        placeholder="Tìm theo mã KH, tên hoặc CCCD..."
+        onkeyup="searchTable(this.value,'customerTable')"
+        style="padding:10px;width:320px;margin-bottom:15px;border-radius:8px;border:1px solid #ccc">
+
+    <table id="customerTable">
+        <tr>
+            <th>Mã KH</th>
+            <th>Họ tên</th>
+            <th>CCCD / Passport</th>
+            <th>SĐT</th>
+            <th>Quốc tịch</th>
+        </tr>
+        <tr>
+            <td>KH001</td>
+            <td>Nguyễn Văn A</td>
+            <td>012345678901</td>
+            <td>0901234567</td>
+            <td>Việt Nam</td>
+        </tr>
+        <tr>
+            <td>KH002</td>
+            <td>Trần Thị B</td>
+            <td>079123456789</td>
+            <td>0912345678</td>
+            <td>Việt Nam</td>
+        </tr>
+        <tr>
+            <td>KH003</td>
+            <td>John Smith</td>
+            <td>P12345678</td>
+            <td>+1 234 567 890</td>
+            <td>USA</td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="staff" class="hidden">
+    <h2>👔 Quản lý nhân viên</h2>
+    <table>
+        <tr>
+            <th>Mã NV</th>
+            <th>Tên</th>
+            <th>Chức vụ</th>
+        </tr>
+        <tr>
+            <td>NV01</td>
+            <td>Lê Văn C</td>
+            <td>Lễ tân</td>
+        </tr>
+        <tr>
+            <td>NV02</td>
+            <td>Phạm Thị D</td>
+            <td>Quản lý</td>
+        </tr>
+    </table>
+</div>
+
+</div>
+
+<script>
+function showPage(id,el){
+    document.querySelectorAll('.main > div')
+        .forEach(p=>p.classList.add('hidden'));
+
+    document.getElementById(id).classList.remove('hidden');
+
+    document.querySelectorAll('.sidebar a')
+        .forEach(a=>a.classList.remove('active'));
+
+    el.classList.add('active');
+}
+
+function toggleStatus(el){
+    el.classList.toggle('pending');
+    el.classList.toggle('success');
+    el.innerText = el.innerText === 'Chờ' ? 'Xác nhận' : 'Chờ';
+}
+
+function toggleDark(){
+    document.body.classList.toggle('dark');
+}
+
+function logout(){
+    alert('Đã đăng xuất!');
+    location.reload();
+}
+
+function searchTable(text,tableId){
+    text = text.toLowerCase();
+    document.querySelectorAll(`#${tableId} tr`)
+        .forEach((row,i)=>{
+            if(i===0) return;
+            row.style.display = row.innerText.toLowerCase().includes(text) ? '' : 'none';
+        });
+}
+</script>
+
 </body>
 </html>
