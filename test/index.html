@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <style>
+        /* CSS giữ nguyên từ file trước, bổ sung thêm style cho Select */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Màu đậm chất quản trị hơn */
+        }
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 420px;
+        }
+        h2 { text-align: center; margin-bottom: 1rem; color: #333; }
+        .input-group { margin-bottom: 1rem; }
+        .input-group label { display: block; margin-bottom: 5px; color: #666; font-size: 0.9rem; font-weight: 600; }
+        .input-group input, .input-group select {
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; outline: none; font-size: 1rem;
+        }
+        .input-group input:focus, .input-group select:focus { border-color: #2a5298; box-shadow: 0 0 5px rgba(42,82,152,0.3); }
+        
+        .role-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+            background: #eef2f7;
+            color: #2a5298;
+        }
+
+        .btn {
+            width: 100%; padding: 12px; border: none; border-radius: 6px;
+            background: #2a5298; color: #fff; font-size: 1rem; font-weight: bold;
+            cursor: pointer; transition: 0.3s; margin-top: 10px;
+        }
+        .btn:hover { background: #1e3c72; }
+        .footer { margin-top: 1.5rem; text-align: center; font-size: 0.85rem; color: #777; }
+        .footer a { color: #2a5298; text-decoration: none; font-weight: bold; cursor: pointer; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="login-form">
+            <h2>Đăng Nhập</h2>
+            <div style="text-align: center;"><span class="role-badge">hotel luxury</span></div>
+            <div class="input-group">
+                <label>Vai trò của bạn</label>
+                <select id="login-role">
+                    <option value="customer">Khách hàng</option>
+                    <option value="admin">Quản lý (Admin)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Tên đăng nhập / Email</label>
+                <input type="text" id="login-user" placeholder="Nhập tài khoản...">
+            </div>
+            <div class="input-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="login-pass" placeholder="********">
+            </div>
+            <button class="btn" onclick="handleLogin()">Xác Nhận Đăng Nhập</button>
+            <div class="footer">
+                <p>Bạn là thành viên mới? <a onclick="toggleForm()">Đăng ký tài khoản</a></p>
+            </div>
+        </div>
+
+        <div id="register-form" class="hidden">
+            <h2>Đăng Ký</h2>
+            <div class="input-group">
+                <label>Bạn đăng ký với tư cách</label>
+                <select id="reg-role">
+                    <option value="customer">Khách hàng</option>
+                    <option value="admin">Quản lý (Cần phê duyệt)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Họ và tên</label>
+                <input type="text" placeholder="Nguyễn Văn A">
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="email@example.com">
+            </div>
+            <div class="input-group">
+                <label>Mật khẩu</label>
+                <input type="password" placeholder="Tạo mật khẩu bảo mật">
+            </div>
+            <button class="btn">Gửi Yêu Cầu Đăng Ký</button>
+            <div class="footer">
+                <p>Đã có tài khoản? <a onclick="toggleForm()">Quay lại Đăng nhập</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chuyển đổi qua lại giữa Login và Register
+        function toggleForm() {
+            document.getElementById('login-form').classList.toggle('hidden');
+            document.getElementById('register-form').classList.toggle('hidden');
+        }
+
+        // Mô phỏng xử lý đăng nhập theo vai trò
+        function handleLogin() {
+            const role = document.getElementById('login-role').value;
+            const user = document.getElementById('login-user').value;
+
+            if(!user) {
+                alert("Vui lòng nhập tên đăng nhập!");
+                return;
+            }
+
+            if(role === 'admin') {
+                alert("Chào Quản lý! Đang chuyển hướng đến Dashboard...");
+                // window.location.href = "admin_dashboard.html"; 
+            } else {
+                alert("Chào Khách hàng! Đang chuyển hướng đến Trang chủ...");
+                // window.location.href = "home.html";
+            }
+        }
+    </script>
+</body>
+</html>
