@@ -1,136 +1,136 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-    background: #3a7f8e;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: #2f7a86;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    width: 900px;
-    height: 500px;
-    background: #fff;
-    display: flex;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+  width: 850px;
+  height: 450px;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.left {
-    width: 50%;
-    padding: 60px;
+.left-panel {
+  width: 50%;
+  background: white;
+  padding: 60px 50px;
+  text-align: center;
 }
 
-.left h2 {
-    font-size: 28px;
+.left-panel h2 {
+  font-size: 35px;
+  margin-bottom: 10px;
 }
 
-.left p {
-    color: #777;
-    margin-bottom: 30px;
+.left-panel p {
+  color: gray;
+  margin-bottom: 40px;
 }
 
-.left input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    outline: none;
+form input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  outline: none;
+  text-align: center;
 }
 
-.left button {
-    width: 100%;
-    padding: 12px;
-    border-radius: 25px;
-    border: none;
-    background: #2f7c8a;
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
+.btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 25px;
+  background: #2f7a86;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.left button:hover {
-    background: #25636e;
+.btn:hover {
+  background: #25646e;
 }
 
 .forgot {
-    display: block;
-    margin-top: 15px;
-    font-size: 13px;
-    text-align: center;
-    color: #aaa;
-    text-decoration: none;
+  display: block;
+  margin-top: 30px;
+  font-size: 13px;
+  color: lightgray;
+  text-decoration: none;
 }
 
-.or {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    color: #888;
-    font-size: 14px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.right-panel {
+  width: 50%;
+  background: url("../images/BackgroundLoginImage.jpg") center/cover no-repeat;
+  position: relative;
 }
 
-.right {
-    width: 50%;
-    background: url("../images/BackgroundLoginImage.jpg") center/cover no-repeat;
-    color: #fff;
-    text-align: center;
-    padding: 60px 40px;
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.55);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.right h2 {
-    font-size: 28px;
+.overlay h2 {
+  font-size: 35px;
+  margin-bottom: 15px;
 }
 
-.right p {
-    margin: 15px 0 30px;
+.overlay p {
+  font-size: 15px;
+  margin-bottom: 30px;
 }
 
-.social {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+.social-icons {
+  display: flex;
+  gap: 20px;
 }
 
-.social a {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+.social-icons a {
+  width: 50px;
+  height: 50px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  transition: 0.3s;
 }
 
-.fb { color: #3b5998; }
-.tw { color: #1da1f2; }
-.gg { color: #db4437; }
-
-.signup {
-    margin-top: 50px;
-    font-size: 14px;
+.social-icons a:hover {
+  background: #2f7a86;
+  color: white;
 }
 
-.signup a {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
+.signup-text {
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #00d9ff;
+  text-decoration: none;
 }
