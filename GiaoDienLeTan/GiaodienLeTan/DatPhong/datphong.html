@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt phòng khách sạn</title>
+    <link rel="stylesheet" href="datphong.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Đặt phòng</h2>
+    <form id="bookingForm">
+        <label for="soPhong">Số phòng:</label>
+        <input type="text" id="soPhong" required>
+        
+        <label for="tenKhach">Tên khách:</label>
+        <input type="text" id="tenKhach" required>
+
+        <label for="soDienThoai">Số điện thoại:</label>
+        <input type="tel" id="soDienThoai" required pattern="[0-9]{10}" placeholder="10 số">
+
+        <label for="ngayNhan">Ngày nhận:</label>
+        <input type="date" id="ngayNhan" required>
+
+        <label for="ngayTra">Ngày trả:</label>
+        <input type="date" id="ngayTra" required>
+
+        <button type="submit">Đặt phòng</button>
+    </form>
+</div>
+
+<script src="datphong.js"></script>
+
+</body>
+</html>

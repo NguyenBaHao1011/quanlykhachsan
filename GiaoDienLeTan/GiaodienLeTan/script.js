@@ -1,52 +1,40 @@
-const rooms = [
-    {so: "101", trangthai: "Trống"},
-    {so: "102", trangthai: "Đang thuê"},
-    {so: "103", trangthai: "Bảo trì"},
-    {so: "104", trangthai: "Trống"},
-    {so: "201", trangthai: "Đang thuê"},
-    {so: "202", trangthai: "Trống"}
-];
+let rooms = JSON.parse(localStorage.getItem("rooms")) || [];
 
-const grid = document.getElementById("roomGrid");
+function themPhong(){
+    let so = document.getElementById("soPhong").value.trim();
 
-function loadRooms(){
-    grid.innerHTML = ""; 
+    if(so === ""){
+        alert("Vui lòng nhập số phòng");
+        return;
+    }
 
-    rooms.forEach((room, index) => {
+    if(rooms.some(r => r.so === so)){
+        alert("Phòng đã tồn tại!");
+        return;
+    }
 
-        let div = document.createElement("div");
-        div.classList.add("room");
+    rooms.push({
+        so: so,
+        trangthai: "Trống"
+    });
 
-        
-        if(room.trangthai === "Trống") div.classList.add("trong");
-        if(room.trangthai === "Đang thuê") div.classList.add("dangthue");
-        if(room.trangthai === "Bảo trì") div.classList.add("baotri");
+    localStorage.setItem("rooms", JSON.stringify(rooms));
+    document.getElementById("soPhong").value = "";
+    hienThiDanhSach();
+}
 
-        div.innerHTML = `
-            Phòng ${room.so} <br>
-            ${room.trangthai}
+function hienThiDanhSach(){
+    const tbody = document.getElementById("dsPhong");
+    tbody.innerHTML = "";
+
+    rooms.forEach(r => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${r.so}</td>
+                <td class="trong">${r.trangthai}</td>
+            </tr>
         `;
-
-       
-        div.onclick = () => {
-            editStatus(index);
-        }
-
-        grid.appendChild(div);
     });
 }
 
-loadRooms();
-
-
-function editStatus(index){
-
-    let newStatus = prompt(
-        "Nhập trạng thái mới:\nTrống / Đang thuê / Bảo trì"
-    );
-
-    if(newStatus){
-        rooms[index].trangthai = newStatus;
-        loadRooms(); 
-    }
-}
+hienThiDanhSach();
