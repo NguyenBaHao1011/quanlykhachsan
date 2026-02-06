@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý phòng</title>
+    <link rel="stylesheet" href="QLP.css">
+</head>
+<body>
+
+
+<div class="navbar">
+    <div class="navbar-left">
+        <span class="logo">🏨 Hotel Admin</span>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="go('../QLKH/QLKH.html')">Khách hàng</li>  
+        <li class="nav-item active">Phòng</li>
+        <li class="nav-item" onclick="go('../DatPhong/DatPhong.html')">Đặt phòng</li>
+        <li class="nav-item" onclick="go('HoaDon.html')">Hóa đơn</li>
+    </ul>
+
+    <div class="navbar-right">
+        <span class="user">Admin</span>
+        <button class="logout-btn">Đăng xuất</button>
+    </div>
+</div>
+
+<div class="container">
+
+ 
+    <div class="form-section">
+        <h2>Cập nhật phòng</h2>
+
+        <div class="customer-form">
+            <div class="form-group">
+                <label>Mã phòng</label>
+                <input type="text" id="maPhong" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Loại phòng</label>
+                <select id="loaiPhong" onchange="capNhatGia()" onkeypress="if(event.key==='Enter') luuPhong()">
+                    <option value="">-- Chọn loại phòng --</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Superior">Superior</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="Premier">Premier</option>
+                    <option value="Junior Suite">Junior Suite</option>
+                    <option value="Family Suite">Family Suite</option>
+                    <option value="Executive Suite">Executive Suite</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label>Giá phòng</label>
+                <input type="number" id="giaPhong" onkeypress="if(event.key==='Enter') luuPhong()">
+            </div>
+
+            <div class="form-group">
+                <label>Tình trạng</label>
+                <select id="tinhTrang" onkeypress="if(event.key==='Enter') luuPhong()">
+                    <option value="Trống">Trống</option>
+                    <option value="Đã đặt">Đã đặt</option>
+                    <option value="Bảo trì">Bảo trì</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn-submit" onclick="luuPhong()">Lưu phòng</button>
+                <button class="btn-cancel" onclick="lamMoi()">Làm mới</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="table-section">
+        <h2>Danh sách phòng</h2>
+
+        <div class="search-box">
+            <input type="text" id="timPhong"
+                   placeholder="Tìm theo mã hoặc loại phòng..."
+                   onkeyup="timKiem()">
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã phòng</th>
+                    <th>Loại phòng</th>
+                    <th>Giá</th>
+                    <th>Tình trạng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="bangPhong"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="QLP.js"></script>
+</body>
+</html>
