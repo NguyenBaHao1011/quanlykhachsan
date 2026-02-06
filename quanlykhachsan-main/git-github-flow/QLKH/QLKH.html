@@ -13,10 +13,10 @@
     </div>
 
     <ul class="nav-menu">
-        <li class="nav-item active">Khách hàng</li>
-        <li class="nav-item">Phòng</li>
-        <li class="nav-item">Đặt phòng</li>
-        <li class="nav-item">Hóa đơn</li>
+        <li class="nav-item active" onclick="go('QLKH.html')">Khách hàng</li>
+        <li class="nav-item" onclick="go('../QLP/QLP.html')">Phòng</li>
+        <li class="nav-item" onclick="go('../DatPhong/DatPhong.html')">Đặt phòng</li>
+        <li class="nav-item" onclick="go('../HoaDon/HoaDon.html')">Hóa đơn</li>
     </ul>
 
     <div class="navbar-right">
@@ -88,6 +88,12 @@
 
 </div>
 
+</script>
+<script>
+function go(page){
+    window.location.href = page;
+}
+</script>
 <script src="script.js"></script>
 </body>
 </html>
