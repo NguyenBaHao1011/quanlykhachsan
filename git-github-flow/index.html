@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Admin System</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+:root{
+    --primary:#6366f1;
+    --primary-dark:#4f46e5;
+
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#0f172a;
+    --text-soft:#475569;
+    --border:#e5e7eb;
+}
+
+
+body.dark{
+    --bg:#020617;
+    --card:#0b1220;
+    --text:#f9fafb;      
+    --text-soft:#cbd5f5;  
+    --border:#1e293b;
+}
+
+*{
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    margin:0;
+    display:flex;
+    background:var(--bg);
+    color:var(--text);
+}
+
+
+.sidebar{
+    width:260px;
+    background:linear-gradient(180deg,#4f46e5,#6366f1);
+    color:#fff;
+    padding:25px 20px;
+    height:100vh;
+    position:fixed;
+    box-shadow:4px 0 20px rgba(0,0,0,.3);
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:35px;
+    font-weight:700;
+}
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 16px;
+    border-radius:14px;
+    margin-bottom:10px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.25s;
+}
+
+.sidebar a:hover{
+    background:rgba(255,255,255,.18);
+    transform:translateX(6px);
+}
+
+.sidebar a.active{
+    background:#fff;
+    color:#4f46e5;
+    font-weight:600;
+}
+
+
+.main{
+    flex:1;
+    padding:30px;
+    margin-left:260px;
+    animation:fade .35s ease;
+}
+
+@keyframes fade{
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:none}
+}
+
+h2{
+    margin-bottom:20px;
+}
+
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(135deg,#eef2ff,#ffffff);
+    color:#1e293b;
+    padding:22px;
+    border-radius:20px;
+    box-shadow:0 15px 30px rgba(99,102,241,.18);
+    transition:.3s;
+}
+
+body.dark .card{
+    background:linear-gradient(135deg,#111827,#020617);
+    color:#f9fafb;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card b{
+    font-size:26px;
+    color:var(--primary-dark);
+}
+
+
+table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    background:var(--card);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+th{
+    background:#eef2ff;
+    color:#3730a3;
+    font-weight:600;
+}
+
+body.dark th{
+    background:#020617;
+    color:#e0e7ff;
+}
+
+th,td{
+    padding:14px;
+    border-bottom:1px solid var(--border);
+}
+
+td{
+    color:var(--text);
+}
+
+tr:hover td{
+    background:rgba(99,102,241,.08);
+}
+
+
+button{
+    padding:9px 14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#6366f1,#4f46e5);
+    color:#fff;
+    font-weight:500;
+    transition:.25s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.btn-danger{
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+
+.form-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.form-box{
+    background:var(--card);
+    color:var(--text);
+    padding:28px;
+    width:420px;
+    border-radius:20px;
+    box-shadow:0 25px 60px rgba(0,0,0,.6);
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    margin-bottom:12px;
+    background:transparent;
+    color:var(--text);
+}
+
+input::placeholder{
+    color:var(--text-soft);
+}
+
+input:focus,select:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(99,102,241,.3);
+}
+
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+
+<div class="sidebar">
+    <h2>🏨 HOTEL ADMIN</h2>
+    <a class="active" onclick="showPage('dashboard',this)">📊 Dashboard</a>
+    <a onclick="showPage('customers',this)">👤 Khách hàng</a>
+    <a onclick="showPage('booking',this)">📅 Đặt phòng</a>
+    <a onclick="showPage('rooms',this)">🛏 Phòng</a>
+    <a onclick="showPage('staff',this)">👔 Nhân viên</a>
+    <a onclick="toggleDark()">🌙 Dark mode</a>
+    <a onclick="logout()">🚪 Đăng xuất</a>
+</div>
+
+
+<div class="main">
+
+<div id="dashboard">
+    <h2>📊 Dashboard</h2>
+    <div class="cards">
+        <div class="card">Tổng phòng<br><b>50</b></div>
+        <div class="card">Đã đặt<br><b>28</b></div>
+        <div class="card">Khách hôm nay<br><b>42</b></div>
+        <div class="card">Doanh thu<br><b>120.000.000đ</b></div>
+    </div>
+</div>
+
+<div id="booking" class="hidden">
+    <h2>📅 Quản lý đặt phòng</h2>
+    <table>
+        <tr>
+            <th>Mã</th><th>Khách</th><th>Phòng</th>
+            <th>Ngày đến</th><th>Ngày đi</th><th>Trạng thái</th>
+        </tr>
+        <tr>
+            <td>DP001</td><td>Nguyễn Văn A</td><td>101</td>
+            <td>01/10/2025</td><td>03/10/2025</td><td>Chờ xác nhận</td>
+        </tr>
+    </table>
+</div>
+
+<div id="customers" class="hidden">
+    <h2>👤 Quản lý khách hàng</h2>
+    <button onclick="openForm('customerForm')">➕ Thêm khách hàng</button>
+    <br><br>
+    <table id="customerTable"></table>
+</div>
+
+<div id="staff" class="hidden">
+    <h2>👔 Quản lý nhân viên</h2>
+    <button onclick="openForm('staffForm')">➕ Thêm nhân viên</button>
+    <br><br>
+    <table id="staffTable"></table>
+</div>
+
+<div id="rooms" class="hidden">
+    <h2>🛏 Quản lý phòng</h2>
+    <button onclick="openForm('roomForm')">➕ Thêm phòng</button>
+    <br><br>
+    <table id="roomTable"></table>
+</div>
+
+</div>
+
+
+<div id="customerForm" class="form-overlay">
+<div class="form-box">
+    <h3>Khách hàng</h3>
+    <input id="maKH" placeholder="Mã KH">
+    <input id="tenKH" placeholder="Họ tên">
+    <input id="cccd" placeholder="CCCD">
+    <input id="sdt" placeholder="SĐT">
+    <input id="quoctich" placeholder="Quốc tịch">
+    <button onclick="saveCustomer()">💾 Lưu</button>
+    <button class="btn-danger" onclick="closeForm('customerForm')">❌ Hủy</button>
+</div>
+</div>
+
+<div id="staffForm" class="form-overlay">
+<div class="form-box">
+    <h3>Nhân viên</h3>
+    <input id="maNV" placeholder="Mã NV">
+    <input id="tenNV" placeholder="Họ tên">
+    <input id="chucVu" placeholder="Chức vụ">
+    <input id="sdtNV" placeholder="SĐT">
+    <button onclick="saveStaff()">💾 Lưu</button>
+    <button class="btn-danger" onclick="closeForm('staffForm')">❌ Hủy</button>
+</div>
+</div>
+
+<div id="roomForm" class="form-overlay">
+<div class="form-box">
+    <h3>Phòng</h3>
+    <input id="maPhong" placeholder="Mã phòng">
+    <input id="loaiPhong" placeholder="Loại phòng">
+    <input id="giaPhong" placeholder="Giá">
+    <select id="trangThaiPhong">
+        <option>Trống</option>
+        <option>Đã đặt</option>
+        <option>Bảo trì</option>
+    </select>
+    <button onclick="saveRoom()">💾 Lưu</button>
+    <button class="btn-danger" onclick="closeForm('roomForm')">❌ Hủy</button>
+</div>
+</div>
+
+<script>
+function showPage(id,el){
+    document.querySelectorAll('.main > div').forEach(p=>p.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+    document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+    el.classList.add('active');
+}
+function toggleDark(){ document.body.classList.toggle('dark'); }
+function logout(){ alert("Đã đăng xuất"); }
+function openForm(id){ document.getElementById(id).style.display="flex"; }
+function closeForm(id){ document.getElementById(id).style.display="none"; }
+
+
+let customers=[], staffs=[], rooms=[];
+let editCustomer=-1, editStaff=-1, editRoom=-1;
+
+
+function render(){
+    customerTable.innerHTML=`
+    <tr>
+        <th>Mã</th><th>Tên</th><th>CCCD</th><th>SĐT</th><th>QT</th><th>Hành động</th>
+    </tr>`;
+    customers.forEach((c,i)=>{
+        customerTable.innerHTML+=`
+        <tr>
+            <td>${c.ma}</td><td>${c.ten}</td><td>${c.cccd}</td>
+            <td>${c.sdt}</td><td>${c.qt}</td>
+            <td>
+                <button onclick="editCustomerFn(${i})">✏️</button>
+                <button class="btn-danger" onclick="deleteCustomer(${i})">🗑</button>
+            </td>
+        </tr>`;
+    });
+
+    staffTable.innerHTML=`
+    <tr>
+        <th>Mã</th><th>Tên</th><th>Chức vụ</th><th>SĐT</th><th>Hành động</th>
+    </tr>`;
+    staffs.forEach((s,i)=>{
+        staffTable.innerHTML+=`
+        <tr>
+            <td>${s.ma}</td><td>${s.ten}</td><td>${s.chucvu}</td><td>${s.sdt}</td>
+            <td>
+                <button onclick="editStaffFn(${i})">✏️</button>
+                <button class="btn-danger" onclick="deleteStaff(${i})">🗑</button>
+            </td>
+        </tr>`;
+    });
+
+    roomTable.innerHTML=`
+    <tr>
+        <th>Mã</th><th>Loại</th><th>Giá</th><th>TT</th><th>Hành động</th>
+    </tr>`;
+    rooms.forEach((r,i)=>{
+        roomTable.innerHTML+=`
+        <tr>
+            <td>${r.ma}</td><td>${r.loai}</td><td>${r.gia}</td><td>${r.trangthai}</td>
+            <td>
+                <button onclick="editRoomFn(${i})">✏️</button>
+                <button class="btn-danger" onclick="deleteRoom(${i})">🗑</button>
+            </td>
+        </tr>`;
+    });
+}
+
+
+function saveCustomer(){
+    const data={ma:maKH.value,ten:tenKH.value,cccd:cccd.value,sdt:sdt.value,qt:quoctich.value};
+    if(editCustomer==-1) customers.push(data);
+    else customers[editCustomer]=data;
+    editCustomer=-1;
+    render(); closeForm('customerForm');
+}
+function editCustomerFn(i){
+    editCustomer=i;
+    const c=customers[i];
+    maKH.value=c.ma; tenKH.value=c.ten; cccd.value=c.cccd;
+    sdt.value=c.sdt; quoctich.value=c.qt;
+    openForm('customerForm');
+}
+function deleteCustomer(i){
+    if(confirm("Xóa khách hàng?")){
+        customers.splice(i,1); render();
+    }
+}
+
+
+function saveStaff(){
+    const data={ma:maNV.value,ten:tenNV.value,chucvu:chucVu.value,sdt:sdtNV.value};
+    if(editStaff==-1) staffs.push(data);
+    else staffs[editStaff]=data;
+    editStaff=-1;
+    render(); closeForm('staffForm');
+}
+function editStaffFn(i){
+    editStaff=i;
+    const s=staffs[i];
+    maNV.value=s.ma; tenNV.value=s.ten;
+    chucVu.value=s.chucvu; sdtNV.value=s.sdt;
+    openForm('staffForm');
+}
+function deleteStaff(i){
+    if(confirm("Xóa nhân viên?")){
+        staffs.splice(i,1); render();
+    }
+}
+
+
+function saveRoom(){
+    const data={ma:maPhong.value,loai:loaiPhong.value,gia:giaPhong.value,trangthai:trangThaiPhong.value};
+    if(editRoom==-1) rooms.push(data);
+    else rooms[editRoom]=data;
+    editRoom=-1;
+    render(); closeForm('roomForm');
+}
+function editRoomFn(i){
+    editRoom=i;
+    const r=rooms[i];
+    maPhong.value=r.ma; loaiPhong.value=r.loai;
+    giaPhong.value=r.gia; trangThaiPhong.value=r.trangthai;
+    openForm('roomForm');
+}
+function deleteRoom(i){
+    if(confirm("Xóa phòng?")){
+        rooms.splice(i,1); render();
+    }
+}
+</script>
+
+
+</body>
+</html>
