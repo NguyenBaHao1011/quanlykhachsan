@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkin Checkout</title>
+  <link rel="stylesheet" href="check.css" />
+</head>
+<body>
+
+<div class="container">
+  <h2>Checkin Checkout</h2>
+
+  <label>Mã đặt phòng:</label>
+  <input type="text" id="roomId" placeholder="Nhập mã phòng">
+
+  <p>
+    <strong>Trạng thái phòng:</strong>
+    <span id="status">---</span>
+  </p>
+
+  <div class="buttons">
+    <button class="checkin" onclick="checkIn()">Check In</button>
+    <button class="checkout" onclick="checkOut()">Check Out</button>
+  </div>
+
+  <p id="message"></p>
+
+  <hr>
+
+<script src="check.js"></script>
+</body>
+</html>

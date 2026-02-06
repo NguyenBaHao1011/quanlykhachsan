@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+.container {
+  width: 400px;
+  margin: 100px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+#status {
+  font-weight: bold;
+}
+
+.available {
+  color: green;
+}
+
+.occupied {
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  width: 45%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.checkin {
+  background-color: #28a745;
+  color: white;
+}
+
+.checkout {
+  background-color: #dc3545;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.message {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
