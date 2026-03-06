@@ -1,52 +1,79 @@
+let customers = [];
 
-const bookingId = 1;
+function checkIn(){
 
-// URL backend PHP
-const BASE_URL = "D:\Chuyên đề\quanlykhachsan\GiaoDienLeTan\GiaodienLeTan";
+let id = document.getElementById("customerId").value;
+let name = document.getElementById("customerName").value;
+let room = document.getElementById("roomId").value;
 
-function checkIn() {
-  const bookingId = document.getElementById("bookingId").value;
-  if (!bookingId) {
-    alert("Vui lòng nhập booking ID");
-    return;
-  }
-
-  fetch(`${BASE_URL}/checkin.php?bookingId=${bookingId}`, {
-    method: "POST"
-  })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("message").innerText = data.message;
-
-      if (data.message.includes("thành công")) {
-        const status = document.getElementById("status");
-        status.innerText = "Occupied";
-        status.className = "occupied";
-      }
-    });
+if(id=="" || name=="" || room==""){
+alert("Vui lòng nhập đầy đủ thông tin");
+return;
 }
 
-function checkOut() {
-  const bookingId = document.getElementById("bookingId").value;
-  if (!bookingId) {
-    alert("Vui lòng nhập booking ID");
-    return;
-  }
+let time = new Date().toLocaleString();
 
-  fetch(`${BASE_URL}/checkout.php?bookingId=${bookingId}`, {
-    method: "POST"
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.total) {
-        document.getElementById("message").innerText =
-          `Check-out thành công. Tổng tiền: ${data.total} VNĐ`;
+customers.push({
+id:id,
+name:name,
+room:room,
+checkIn:time,
+checkOut:"",
+status:"Đang ở"
+});
 
-        const status = document.getElementById("status");
-        status.innerText = "Available";
-        status.className = "available";
-      } else {
-        document.getElementById("message").innerText = data.message;
-      }
-    });
+renderTable();
+clearInput();
+
+}
+
+function checkOut(){
+
+let room = document.getElementById("roomId").value;
+
+for(let i=0;i<customers.length;i++){
+
+if(customers[i].room===room && customers[i].status==="Đang ở"){
+
+customers[i].checkOut = new Date().toLocaleString();
+customers[i].status = "Đã trả phòng";
+
+break;
+}
+
+}
+
+renderTable();
+clearInput();
+
+}
+
+function renderTable(){
+
+let table = document.getElementById("tableBody");
+table.innerHTML="";
+
+customers.forEach(c=>{
+
+let row=`
+<tr>
+<td>${c.id}</td>
+<td>${c.name}</td>
+<td>${c.room}</td>
+<td>${c.checkIn}</td>
+<td>${c.checkOut}</td>
+<td>${c.status}</td>
+</tr>
+`;
+
+table.innerHTML+=row;
+
+});
+
+}
+
+function clearInput(){
+document.getElementById("customerId").value="";
+document.getElementById("customerName").value="";
+document.getElementById("roomId").value="";
 }

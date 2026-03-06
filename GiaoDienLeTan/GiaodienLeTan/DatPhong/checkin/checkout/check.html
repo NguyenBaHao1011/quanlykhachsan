@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <title>Checkin Checkout</title>
-  <link rel="stylesheet" href="check.css" />
+<meta charset="UTF-8">
+<title>Hotel Management</title>
+<link rel="stylesheet" href="check.css">
 </head>
+
 <body>
 
-<div class="container">
-  <h2>Checkin Checkout</h2>
+<h1> HỆ THỐNG QUẢN LÝ KHÁCH SẠN - CHECKIN / CHECKOUT</h1>
 
-  <label>Mã đặt phòng:</label>
-  <input type="text" id="roomId" placeholder="Nhập mã phòng">
+<div class="form">
 
-  <p>
-    <strong>Trạng thái phòng:</strong>
-    <span id="status">---</span>
-  </p>
+<input type="text" id="customerId" placeholder="Mã khách hàng">
+<input type="text" id="customerName" placeholder="Tên khách">
+<input type="text" id="roomId" placeholder="Mã phòng">
 
-  <div class="buttons">
-    <button class="checkin" onclick="checkIn()">Check In</button>
-    <button class="checkout" onclick="checkOut()">Check Out</button>
-  </div>
+<div class="buttons">
+<button class="checkin" onclick="checkIn()">Check In</button>
+<button class="checkout" onclick="checkOut()">Check Out</button>
+</div>
 
-  <p id="message"></p>
+</div>
 
-  <hr>
+<h2>Danh sách khách</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Mã khách</th>
+<th>Tên khách</th>
+<th>Mã phòng</th>
+<th>Check In</th>
+<th>Check Out</th>
+<th>Trạng thái</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
 
 <script src="check.js"></script>
+
 </body>
 </html>
