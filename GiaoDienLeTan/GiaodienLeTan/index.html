@@ -1,38 +1,85 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Lễ tân khách sạn</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Hệ Thống Quản Lý Khách Sạn - Lễ Tân</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header class="header">
-    <h2>🏨 Lễ tân khách sạn</h2>
-</header>
+<div class="sidebar">
+<h2>Hotel</h2>
 
-<div class="container">
+<ul>
+<li>Trang chủ</li>
+<li>Quản lý phòng</li>
+<li>Check In - Check Out</li>
+<li>Đặt phòng</li>
+<li>Hóa đơn</li>
+</ul>
 
-    <div class="sidebar">
-        <h3>MENU</h3>
-        <a href="#">Dashboard</a>
-        <a href="D:\Chuyên đề\quanlykhachsan\GiaoDienLeTan\GiaodienLeTan\GiaodienQLP\qlp.html">Quản lý phòng</a>
-        <a href="D:\Chuyên đề\quanlykhachsan\GiaoDienLeTan\GiaodienLeTan\DatPhong\datphong.html">Đặt phòng</a>
-        <a href="#">Khách hàng</a>
-        <a href ='D:\Chuyên đề\quanlykhachsan\GiaoDienLeTan\GiaodienLeTan\DatPhong\checkin\checkout\check.html'>Booking</a> 
-        <a href="#">Hóa đơn</a>
-    </div>
+</div>
 
-    <div class="main">
-        <h3>Tình trạng phòng</h3>
-        <div class="room-grid" id="roomGrid"></div>
-    </div>
+<div class="main">
+
+<div class="header">
+
+<h1>HỆ THỐNG QUẢN LÝ KHÁCH SẠN - GIAO DIỆN LỄ TÂN</h1>
+
+<button class="logout">Đăng xuất</button>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>Danh sách phòng</h3>
+
+<table>
+
+<thead>
+<tr>
+<th>Mã phòng</th>
+<th>Trạng thái</th>
+<th>Mã khách</th>
+</tr>
+</thead>
+
+<tbody id="roomTable">
+
+<tr>
+<td>P101</td>
+<td class="status-empty">Trống</td>
+<td></td>
+</tr>
+
+<tr>
+<td>P102</td>
+<td class="status-empty">Trống</td>
+<td></td>
+</tr>
+
+<tr>
+<td>P103</td>
+<td class="status-empty">Trống</td>
+<td></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
 
 </div>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>

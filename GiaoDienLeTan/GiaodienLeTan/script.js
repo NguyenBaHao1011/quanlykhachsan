@@ -1,40 +1,46 @@
-let rooms = JSON.parse(localStorage.getItem("rooms")) || [];
+function checkin(){
 
-function themPhong(){
-    let so = document.getElementById("soPhong").value.trim();
+let customer = document.getElementById("customerId").value
+let room = document.getElementById("roomId").value
 
-    if(so === ""){
-        alert("Vui lòng nhập số phòng");
-        return;
-    }
+let rows = document.querySelectorAll("#roomTable tr")
 
-    if(rooms.some(r => r.so === so)){
-        alert("Phòng đã tồn tại!");
-        return;
-    }
+rows.forEach(row => {
 
-    rooms.push({
-        so: so,
-        trangthai: "Trống"
-    });
+let roomId = row.cells[0].innerText
 
-    localStorage.setItem("rooms", JSON.stringify(rooms));
-    document.getElementById("soPhong").value = "";
-    hienThiDanhSach();
+if(roomId === room){
+
+row.cells[1].innerText = "Đã thuê"
+row.cells[1].className = "status-full"
+
+row.cells[2].innerText = customer
+
 }
 
-function hienThiDanhSach(){
-    const tbody = document.getElementById("dsPhong");
-    tbody.innerHTML = "";
+})
 
-    rooms.forEach(r => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${r.so}</td>
-                <td class="trong">${r.trangthai}</td>
-            </tr>
-        `;
-    });
 }
 
-hienThiDanhSach();
+function checkout(){
+
+let room = document.getElementById("roomCheckout").value
+
+let rows = document.querySelectorAll("#roomTable tr")
+
+rows.forEach(row => {
+
+let roomId = row.cells[0].innerText
+
+if(roomId === room){
+
+row.cells[1].innerText = "Trống"
+row.cells[1].className = "status-empty"
+
+row.cells[2].innerText = ""
+
+}
+
+})
+
+}
