@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Đặt Phòng Khách Sạn</title>
+<link rel="stylesheet" href="datphong.css">
+</head>
+
+<body>
+<nav class="navbar">
+    <div class="navbar-left">
+        <span class="logo">🏨 Hotel Admin</span>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item" onclick="go('../QLKH/QLKH.html')">Khách hàng</li>
+        <li class="nav-item" onclick="go('../QLP/QLP.html')">Phòng</li>
+        <li class="nav-item active" onclick="go('DatPhong.html')">Đặt phòng</li>
+        <li class="nav-item" onclick="go('../QLHD/QLHD.html')">Hóa đơn</li>
+    </ul>
+
+    <div class="navbar-right">
+        <span class="user">Admin</span>
+        <button class="logout-btn">Đăng xuất</button>
+    </div>
+</nav>
+<div class="container">
+
+<h2>ĐẶT PHÒNG KHÁCH SẠN</h2>
+
+<div class="form">
+
+<div class="left">
+
+<label>Mã KH:</label>
+<input type="text" id="makh" onkeyup="timKhachHang()">
+
+<label>Họ tên:</label>
+<input type="text" id="tenkh">
+
+<label>SĐT:</label>
+<input type="text" id="sdt">
+
+<label>Mã phòng:</label>
+<input type="text" id="maphong" onkeyup="timPhong()">
+
+<label>Loại phòng:</label>
+<input type="text" id="loaiphong">
+
+<label>Giá phòng:</label>
+<input type="number" id="giaphong">
+
+</div>
+
+
+<div class="right">
+
+<label>Ngày nhận:</label>
+<input type="date" id="ngaynhan" onchange="tinhTien()">
+
+<label>Ngày trả:</label>
+<input type="date" id="ngaytra" onchange="tinhTien()">
+
+<label>Tổng tiền:</label>
+<input type="text" id="tongtien" readonly>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button onclick="datPhong()">Đặt phòng</button>
+<button class="delete" onclick="huyPhong()">Hủy phòng</button>
+
+</div>
+
+<h3>Danh sách phòng đã đặt</h3>
+
+<input type="text" id="timkiem" placeholder="Tìm kiếm..." onkeyup="timKiem()">
+
+<table>
+
+<thead>
+<tr>
+<th>Mã KH</th>
+<th>Họ tên</th>
+<th>SĐT</th>
+<th>Mã phòng</th>
+<th>Loại phòng</th>
+<th>Ngày nhận</th>
+<th>Ngày trả</th>
+<th>Tổng tiền</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+</div>
+
+<script src="datphong.js"></script>
+
+</body>
+</html>
