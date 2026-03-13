@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <div class="system-title-top">
+        <i class="fas fa-desktop"></i> HỆ THỐNG QUẢN LÝ KHÁCH SẠN
+    </div>
+    <meta charset="UTF-8">
+    <title>Hệ Thống Quản Lý Khách Sạn - Lễ Tân</title>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-hotel"></i>
+            <span>LUXE HOTEL</span>
+        </div>
+        <nav>
+            <ul>
+                <li class="active"><i class="fas fa-th-large"></i> Trang chủ</li>
+                <li><i class="fas fa-door-open"></i> Quản lý phòng</li>
+                <li><i class="fas fa-exchange-alt"></i> Check In/Out</li>
+                <li><i class="fas fa-calendar-check"></i> Đặt phòng</li>
+                <li><i class="fas fa-file-invoice-dollar"></i> Hóa đơn</li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Tìm kiếm phòng, khách hàng...">
+            </div>
+            <div class="user-profile">
+                <span class="user-name">Lễ tân: <strong>Nguyễn Văn A</strong></span>
+                <button class="btn-logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</button>
+            </div>
+        </header>
+
+        <section class="dashboard-overview">
+            <div class="stat-card">
+                <div class="info"><h3>12</h3><p>Phòng Trống</p></div>
+                <i class="fas fa-check-circle icon-green"></i>
+            </div>
+            <div class="stat-card">
+                <div class="info"><h3>08</h3><p>Đang Ở</p></div>
+                <i class="fas fa-user-friends icon-blue"></i>
+            </div>
+            <div class="stat-card">
+                <div class="info"><h3>03</h3><p>Đang Dọn</p></div>
+                <i class="fas fa-broom icon-yellow"></i>
+            </div>
+        </section>
+
+        <div class="data-card">
+            <div class="card-header">
+                <h3><i class="fas fa-list"></i> Tình trạng phòng thực tế</h3>
+                <button class="btn-refresh"><i class="fas fa-sync"></i> Làm mới</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã phòng</th>
+                        <th>Loại phòng</th>
+                        <th>Trạng thái</th>
+                        <th>Khách hàng</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="roomTable">
+                    <tr>
+                        <td><strong>P101</strong></td>
+                        <td>Standard Single</td>
+                        <td><span class="status status-empty">Trống</span></td>
+                        <td>--</td>
+                        <td><button class="btn-action">Đặt phòng</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>P102</strong></td>
+                        <td>Deluxe Double</td>
+                        <td><span class="status status-occupied">Có khách</span></td>
+                        <td>Trần Văn B</td>
+                        <td><button class="btn-action secondary">Chi tiết</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
