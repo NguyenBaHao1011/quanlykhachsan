@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f8;
+}
+
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e63;
+    padding: 12px 40px;
+    color: white;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    color: white;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.nav-item:hover {
+    background: #3e5a8a;
+}
+
+.nav-item.active {
+    background: #4fa3ff;
+}
+
+
+
+
+.admin {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logout {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+.container {
+    width: 850px;
+    margin: auto;
+    margin-top: 40px;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+
+
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+
+
+
+.info {
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th {
+    background: #3498db;
+    color: white;
+    padding: 10px;
+}
+
+table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+
+.tongtien {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 18px;
+}
+
+.tongtien h2 {
+    color: red;
+}
+
+
+
+
+.button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 5px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1e874b;
+}
+
