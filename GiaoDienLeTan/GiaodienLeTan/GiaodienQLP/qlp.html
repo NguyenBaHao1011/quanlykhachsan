@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý phòng</title>
+    <link rel="stylesheet" href="qlp.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🏨 Quản lý phòng</h1>
+
+
+    <div class="card">
+        <h3>➕ Thêm / Sửa phòng</h3>
+        <div class="form">
+            <input type="hidden" id="editIndex">
+
+            <input type="text" id="soPhong" placeholder="Số phòng">
+            
+            <select id="trangThai">
+                <option value="Trống">Trống</option>
+                <option value="Đang thuê">Đang thuê</option>
+                <option value="Bảo trì">Bảo trì</option>
+            </select>
+
+            <button onclick="saveRoom()">Lưu</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>📋 Danh sách phòng</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Số phòng</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="roomTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="qlp.js"></script>
+</body>
+</html>

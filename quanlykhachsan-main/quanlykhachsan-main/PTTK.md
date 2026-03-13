@@ -1,0 +1,13 @@
+Phân tích thiết kế
+
+Lời mở đầu
+
+Trong thời đại công nghiệp hóa – hiện đại hóa, ngành du lịch và dịch vụ khách sạn đang phát triển mạnh mẽ, đóng vai trò quan trọng trong sự phát triển kinh tế, giao lưu văn hóa, đồng thời góp phần thúc đẩy các ngành nghề liên quan như vận tải, ẩm thực, giải trí và mua sắm. Với sự cạnh tranh ngày càng cao, việc nâng cao chất lượng dịch vụ và tối ưu hóa hoạt động quản lý khách sạn trở thành yêu cầu cấp thiết nhằm đáp ứng nhu cầu ngày càng đa dạng và khắt khe của khách hàng, đồng thời nâng cao hiệu quả kinh doanh và uy tín của đơn vị.
+
+Hiện nay, nhiều khách sạn vẫn còn áp dụng các phương pháp quản lý thủ công hoặc bán tự động, dẫn đến những hạn chế đáng kể trong việc  theo dõi tình trạng phòng, quản lý dịch vụ, nhân sự, hóa đơn và doanh thu . Điều này không chỉ gây khó khăn cho nhân viên trong việc xử lý thông tin, mà còn tiềm ẩn nguy cơ sai sót, chậm trễ và giảm hiệu quả vận hành tổng thể. Trước thực trạng đó, việc nghiên cứu, phân tích và thiết kế một hệ thống quản lý khách sạn tích hợp, hiệu quả và dễ sử dụng là  rất cần thiết , nhằm tự động hóa các quy trình nghiệp vụ, cải thiện năng suất làm việc và nâng cao trải nghiệm khách hàng.
+
+Mục tiêu của dự án này là  phân tích hiện trạng, xác định yêu cầu và thiết kế một hệ thống quản lý khách sạn hoàn chỉnh , bao gồm các chức năng cơ bản như: quản lý phòng, đặt phòng trực tuyến và trực tiếp, check-in/check-out, quản lý dịch vụ đi kèm, quản lý thanh toán và hóa đơn, quản lý khách hàng, nhân sự cũng như báo cáo thống kê và phân tích doanh thu. Hệ thống được đề xuất không chỉ giúp  tối ưu hóa quy trình vận hành , giảm thiểu sai sót, tiết kiệm thời gian và công sức của nhân viên, mà còn cung cấp thông tin đầy đủ, kịp thời phục vụ cho công tác quản lý và ra quyết định của ban lãnh đạo khách sạn.
+
+Qua môn học này, nhóm thực hiện mong muốn góp phần  ứng dụng công nghệ thông tin trong quản lý khách sạn , tạo tiền đề cho việc triển khai thực tế một hệ thống hiện đại, phù hợp với các tiêu chuẩn chuyên môn và nhu cầu thực tiễn trong ngành. Đồng thời, đồ án này cũng giúp nhóm nâng cao  kiến thức về phân tích, thiết kế hệ thống, cơ sở dữ liệu, giao diện và quy trình nghiệp vụ , từ đó phát triển năng lực tư duy logic, kỹ năng lập kế hoạch và giải quyết vấn đề, đáp ứng tốt hơn yêu cầu trong môi trường làm việc chuyên nghiệp.
+
+Với những nội dung trên, nhóm hy vọng rằng hệ thống quản lý khách sạn được thiết kế sẽ  góp phần nâng cao hiệu quả hoạt động, cải thiện chất lượng dịch vụ và đáp ứng nhu cầu ngày càng cao của khách hàng , đồng thời là một bước chuẩn bị vững chắc cho các dự án công nghệ thông tin trong tương lai.
