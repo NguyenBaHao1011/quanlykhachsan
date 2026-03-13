@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt phòng khách sạn</title>
+    <link rel="stylesheet" href="DatPhong.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>Hotel Booking</h1>
+</header>
+
+<div class="container">
+
+    <!-- Thông tin khách sạn -->
+    <div class="hotel-info">
+        <img src="quanlykhachsan-main/img/Luxury interior Design.jpg" alt="Khách sạn">
+        <div>
+            <h2>Khách sạn Luxury</h2>
+            <p>📍 Đà Nẵng, Việt Nam</p>
+            <p>⭐ 4.5 / 5</p>
+        </div>
+    </div>
+
+    <!-- Form đặt phòng -->
+    <form class="booking-form" onsubmit="return datPhong()">
+        <h3>Thông tin đặt phòng</h3>
+
+        <div class="form-group">
+            <label>Ngày nhận phòng</label>
+            <input type="date" id="ngayNhan" required>
+        </div>
+
+        <div class="form-group">
+            <label>Ngày trả phòng</label>
+            <input type="date" id="ngayTra" required>
+        </div>
+
+        <div class="form-group">
+            <label>Loại phòng</label>
+            <select id="loaiPhong" onchange="tinhTien()">
+                <option value="500000">Phòng đơn - 500.000đ</option>
+                <option value="800000">Phòng đôi - 800.000đ</option>
+                <option value="1500000">Phòng VIP - 1.500.000đ</option>
+            </select>
+        </div>
+
+        <h3>Thông tin khách hàng</h3>
+
+        <div class="form-group">
+            <label>Họ và tên</label>
+            <input type="text" id="hoTen" required>
+        </div>
+
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="text" id="dienThoai" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email">
+        </div>
+
+        <div class="result">
+            <p>Số ngày thuê: <span id="soNgay">0</span></p>
+            <p>Tổng tiền: <strong id="tongTien">0 đ</strong></p>
+        </div>
+
+        <button type="submit" class="btn-book">Đặt phòng ngay</button>
+    </form>
+
+</div>
+
+<footer class="footer">
+    © 2026 Hotel Booking
+</footer>
+
+<script src="DatPhong.js"></script>
+</body>
+</html>

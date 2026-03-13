@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4f6f9;
+}
+
+.header {
+    background: #1e90ff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.hotel-info {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hotel-info img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.booking-form {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.btn-book {
+    width: 100%;
+    padding: 12px;
+    background: #1e90ff;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-book:hover {
+    background: #187bcd;
+}
+
+.result {
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.footer {
+    text-align: center;
+    padding: 15px;
+    background: #eee;
+}

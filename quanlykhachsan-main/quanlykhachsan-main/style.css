@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+}
+
+/* NAVBAR */
+.navbar {
+    height: 60px;
+    background-color: #1f2d3d;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 30px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.nav-menu li:hover,
+.nav-menu li.active {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* CONTAINER */
+.container {
+    padding: 35px 50px;
+}
+
+/* FORM */
+.form-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+}
+
+.customer-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.btn-submit {
+    grid-column: span 2;
+    width: 220px;
+    padding: 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #219150;
+}
+
+/* TABLE */
+.table-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.search-box {
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    width: 300px;
+    padding: 9px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: #ecf0f1;
+    padding: 12px;
+}
+
+table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* BUTTON */
+.btn.delete {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn.delete:hover {
+    background-color: #c0392b;
+}
