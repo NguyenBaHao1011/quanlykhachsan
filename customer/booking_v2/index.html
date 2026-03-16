@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Phòng Khách Sạn - Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="datphong.js"></script>
+</head>
+<body>
+
+    <div class="booking-container">
+        <h2>📅 Đặt Phòng Ngay</h2>
+        
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="room_id">Chọn loại phòng:</label>
+                <select id="room_id" required>
+                    <option value="1">Phòng Đơn (Standard)</option>
+                    <option value="2">Phòng Đôi (Deluxe)</option>
+                    <option value="3">Phòng VIP (Suite)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Họ và Tên:</label>
+                <input type="text" id="name" placeholder="Nhập tên của bạn..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="check_in">Ngày nhận phòng:</label>
+                <input type="date" id="check_in" required>
+            </div>
+
+            <div class="form-group">
+                <label for="check_out">Ngày trả phòng:</label>
+                <input type="date" id="check_out" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Xác Nhận Đặt</button>
+        </form>
+
+        <div id="statusMessage" class="message-box"></div>
+    </div>
+</body>
+</html>

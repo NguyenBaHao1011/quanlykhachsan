@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử đặt phòng - Luxury Hotel</title>
+    <link rel="stylesheet" href="../assets/css/design-system.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../assets/js/theme-toggle.js"></script>
+    <style>
+        .page-container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .booking-card {
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .booking-img {
+            width: 150px;
+            height: 100px;
+            border-radius: 10px;
+            background: #eee;
+            background-size: cover;
+        }
+
+        .booking-details { flex: 1; }
+        .booking-id { font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+        .booking-info { font-size: 14px; margin-top: 10px; display: flex; gap: 20px; }
+
+        .status-pill {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar" style="background: #1e293b; position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 15px 40px; align-items: center; z-index: 1000;">
+    <div class="logo" style="color: white; font-size: 20px; font-weight: 800;"><a href="index.html" style="color: white; text-decoration: none;"><i class="fas fa-hotel"></i> LUXURY</a></div>
+    <div class="nav-links">
+        <a href="index.html" style="color: white; text-decoration: none; font-size: 14px; font-weight: 600; margin-right: 20px;">TRANG CHỦ</a>
+        <a onclick="AuthGuard.logout()" style="color: #fecaca; text-decoration: none; font-size: 14px; font-weight: 600; cursor: pointer;">ĐĂNG XUẤT</a>
+    </div>
+    <button class="btn-theme" style="color: white; background: none; border: none; cursor: pointer;" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+</nav>
+
+<div class="page-container">
+    <div style="display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: start;">
+        <!-- PROFILE SIDEBAR -->
+        <div class="card" style="padding: 30px; position: sticky; top: 100px;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="width: 80px; height: 80px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 32px; font-weight: 800;">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3 id="profile-name">Đang tải...</h3>
+                <p id="profile-username" style="font-size: 13px; opacity: 0.6;"></p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label>Họ tên</label>
+                <input type="text" id="edit-fullname" style="margin-bottom: 12px; font-size: 14px; padding: 10px;">
+                <label>Email</label>
+                <input type="email" id="edit-email" style="margin-bottom: 12px; font-size: 14px; padding: 10px;">
+                <label>Số điện thoại</label>
+                <input type="text" id="edit-phone" style="margin-bottom: 12px; font-size: 14px; padding: 10px;">
+            </div>
+            
+            <button class="btn btn-primary" style="width: 100%;" onclick="updateProfile()">Lưu thay đổi</button>
+            <div id="profile-msg" style="margin-top: 15px; font-size: 12px; text-align: center; display: none;"></div>
+        </div>
+
+        <!-- BOOKING HISTORY -->
+        <div id="history-container">
+            <h1 style="margin-bottom: 30px; font-size: 28px;">Lịch sử đặt phòng</h1>
+            <div id="booking-list">
+                <!-- Data will be loaded via JS -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/auth-guard.js"></script>
+<script>
+    const API_URL = '/api';
+
+    async function loadProfile() {
+        const user = AuthGuard.getUser();
+        if (!user) { window.location.href = '../login.html'; return; }
+        
+        try {
+            const res = await fetch(`${API_URL}/users/profile?id=${user.id}`);
+            const data = await res.json();
+            
+            document.getElementById('profile-name').innerText = data.full_name;
+            document.getElementById('profile-username').innerText = `@${data.username}`;
+            document.getElementById('edit-fullname').value = data.full_name;
+            document.getElementById('edit-email').value = data.email || '';
+            document.getElementById('edit-phone').value = data.phone || '';
+        } catch (e) { console.error(e); }
+    }
+
+    async function updateProfile() {
+        const user = AuthGuard.getUser();
+        const msg = document.getElementById('profile-msg');
+        const data = {
+            id: user.id,
+            full_name: document.getElementById('edit-fullname').value,
+            email: document.getElementById('edit-email').value,
+            phone: document.getElementById('edit-phone').value
+        };
+
+        try {
+            const res = await fetch(`${API_URL}/users/profile`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            
+            msg.style.display = 'block';
+            if (res.ok) {
+                msg.style.color = 'var(--success)';
+                msg.innerText = "✅ " + result.message;
+                document.getElementById('profile-name').innerText = data.full_name;
+                // Update local storage too
+                user.full_name = data.full_name;
+                localStorage.setItem('user', JSON.stringify(user));
+            } else {
+                msg.style.color = 'var(--danger)';
+                msg.innerText = "❌ " + result.message;
+            }
+        } catch (e) { console.error(e); }
+    }
+
+    async function loadHistory() {
+        const user = AuthGuard.getUser();
+        if (!user) return;
+
+        try {
+            const res = await fetch(`${API_URL}/bookings`);
+            const bookings = await res.json();
+            const list = document.getElementById('booking-list');
+            
+            const myBookings = bookings.filter(b => b.user_id == user.id);
+            
+            if (myBookings.length === 0) {
+                list.innerHTML = `
+                <div class="card" style="padding: 40px; text-align: center; opacity: 0.6;">
+                    <i class="fas fa-calendar-times" style="font-size: 48px; margin-bottom: 15px;"></i>
+                    <p>Bạn chưa có đơn đặt phòng nào.</p>
+                </div>`;
+                return;
+            }
+
+            list.innerHTML = myBookings.sort((a,b) => b.id - a.id).map(b => `
+                <div class="card booking-card">
+                    <div class="booking-img" style="background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--primary);">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="booking-details">
+                        <div class="booking-id">Mã Đặt Phòng: #BK-${b.id}</div>
+                        <h3 style="font-size: 18px; margin-top: 5px;">${b.type_name || 'Phòng Khách Sạn'} - Phòng ${b.room_number || '...'}</h3>
+                        <div class="booking-info">
+                            <span><i class="fas fa-calendar-alt"></i> ${b.check_in_date} - ${b.check_out_date}</span>
+                            <span style="font-weight: 700; color: var(--primary);">${Number(b.total_price).toLocaleString()}₫</span>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="status-pill" style="display: block; margin-bottom: 10px; background: ${getStatusColor(b.status).bg}; color: ${getStatusColor(b.status).text};">
+                            ${(b.status || '').toUpperCase()}
+                        </span>
+                        ${b.status === 'pending' ? `<button class="btn btn-muted" style="padding: 4px 12px; font-size: 11px;" onclick="cancelBooking(${b.id})">Hủy yêu cầu</button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        } catch (e) { console.error(e); }
+    }
+
+    async function cancelBooking(id) {
+        if (!confirm("Bạn có chắc chắn muốn hủy yêu cầu đặt phòng này?")) return;
+        try {
+            const res = await fetch(`${API_URL}/customer/bookings`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id })
+            });
+            if (res.ok) {
+                loadHistory();
+            }
+        } catch (e) { console.error(e); }
+    }
+
+    function getStatusColor(status) {
+        switch(status) {
+            case 'confirmed': return { bg: '#dcfce7', text: '#166534' };
+            case 'pending': return { bg: '#fef9c3', text: '#854d0e' };
+            case 'cancelled': return { bg: '#fee2e2', text: '#991b1b' };
+            case 'checked_in': return { bg: '#e0f2fe', text: '#0369a1' };
+            case 'checked_out': return { bg: '#f1f5f9', text: '#475569' };
+            default: return { bg: '#f1f5f9', text: '#475569' };
+        }
+    }
+
+    window.onload = () => {
+        loadProfile();
+        loadHistory();
+    };
+</script>
+
+</body>
+</html>
